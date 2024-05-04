@@ -1,25 +1,13 @@
-[{
-    "model": "catalog.product",
-    "pk": 16,
-    "fields": {
-      "name": "Samsung",
-      "description": "2024",
-      "image": "",
-      "category": 4,
-      "cost_of_purchase": 50000,
-      "created_at": "2024-05-04",
-      "updated_at": "2024-05-04"
-    }
-  },
+[
   {
     "model": "catalog.product",
-    "pk": 17,
+    "pk": 18,
     "fields": {
-      "name": "hp",
-      "description": "2024",
+      "name": "Samsung",
+      "description": "2025",
       "image": "",
-      "category": 5,
-      "cost_of_purchase": 100000,
+      "category": 7,
+      "cost_of_purchase": 20000,
       "created_at": "2024-05-04",
       "updated_at": "2024-05-04"
     }
