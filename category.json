@@ -10,5 +10,18 @@
       "created_at": "2024-05-04",
       "updated_at": "2024-05-04"
     }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 17,
+    "fields": {
+      "name": "hp",
+      "description": "2024",
+      "image": "",
+      "category": 5,
+      "cost_of_purchase": 100000,
+      "created_at": "2024-05-04",
+      "updated_at": "2024-05-04"
+    }
   }
 ]
