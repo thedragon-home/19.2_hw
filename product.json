@@ -6,9 +6,9 @@
       "name": "Samsung",
       "description": "2025",
       "image": "",
-      "category": 7,
+      "category": 16,
       "cost_of_purchase": 20000,
-      "created_at": "2024-05-04",
+      "created_at": "01-05-2024",
       "updated_at": "2024-05-04"
     }
   }
