@@ -1,6 +1,7 @@
 from django.core.management import BaseCommand
 from catalog.models import Category, Product
 import json
+from datetime import datetime
 from django.db import connection
 
 class Command(BaseCommand):
@@ -35,6 +36,6 @@ class Command(BaseCommand):
             Product(id=product['pk'], name=product["fields"]["name"],
                     description=product["fields"]["description"],
                     category=Category.objects.get(pk=product["fields"]["category"]),
-                    price=product["fields"]["price"])
+                    cost_of_purchase=product["fields"]["cost_of_purchase"])
             )
         Product.objects.bulk_create(product_for_create)

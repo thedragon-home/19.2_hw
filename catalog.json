@@ -1,14 +1,11 @@
-[{
-    "model": "catalog.product",
-    "pk": 16,
+[  [
+  {
+    "model": "catalog.category",
+    "pk": 1,
     "fields": {
-      "name": "Samsung",
-      "description": "2024",
-      "image": "",
-      "category": 4,
-      "cost_of_purchase": 50000,
-      "created_at": "2024-05-04",
-      "updated_at": "2024-05-04"
+      "name": "телефоны",
+      "description": "Телефоны 2024"
     }
   }
+]
 ]
