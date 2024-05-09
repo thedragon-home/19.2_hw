@@ -23,7 +23,7 @@ class Product(models.Model):
     description = models.TextField(
         verbose_name="описание", help_text="Введите описание"
     )
-    image = models.ImageField(upload_to="images/", verbose_name="изображение", **NULLABLE)
+    image = models.ImageField(upload_to="product/photo/", verbose_name="изображение", **NULLABLE)
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL,
