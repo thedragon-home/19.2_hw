@@ -1,0 +1,23 @@
+{% extends 'home.html' %}
+{% block content %}
+<div class="row text-center">
+    {% for product in products %}
+    <div class="col-3">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">{{ product.name }}</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">{{ product.cost_of_purchase }} ₽</h1>
+                <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                    <li>{{ product.description }}</li>
+                    <li>Создан: {{ product.created_at }}</li>
+                    <li>Обновлен: {{ product.updated_at }}</li>
+                </ul>
+                <a type="button" class="btn btn-primary" href="{% url 'catalog:home_product' product.pk %}">Посмотреть</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
