@@ -9,11 +9,13 @@
             </div>
             <div class="card-body">
                 <div class="card show-sm">
+                    <!-- фильтер для фотографии -->
                     <img src="{{ product.image | media_filter }}">
                 </div>
                 <h1 class="card-title pricing-card-title">{{ product.cost_of_purchase }} ₽</h1>
                 <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                    <li>{{ product.description }}</li>
+                    <!-- ограничение в 100 символов -->
+                    <p max_length="100">{{ product.description | slice:100 }}</p>
                     <li>Создан: {{ product.created_at }}</li>
                     <li>Обновлен: {{ product.updated_at }}</li>
                 </ul>
