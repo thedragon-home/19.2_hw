@@ -34,6 +34,8 @@ class Product(models.Model):
     cost_of_purchase = models.IntegerField(verbose_name="цена покупки")
     created_at = models.DateField(verbose_name="дата создания", **NULLABLE)
     updated_at = models.DateField(verbose_name="дата последнего изменеия", **NULLABLE)
+    view_counter = models.IntegerField(verbose_name="количество просмотров", help_text="Количество просмотров", default=0)
+    is_published = models.BooleanField(default=True, verbose_name="опубликовано")
 
     def __str__(self):
         return f"{self.name}: {self.description}"
