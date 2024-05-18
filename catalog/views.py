@@ -1,5 +1,6 @@
 from django.urls import reverse_lazy, reverse
 from django.utils.text import slugify
+from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from catalog.models import Product
@@ -27,10 +28,9 @@ class ProductCreateView(CreateView):
     success_url = reverse_lazy('catalog:home')
 
     def form_valid(self, form):
-        if form.is_valid():
-            new_product = form.save(commit=False)
-            new_product.slug = slugify(new_product.name)
-            new_product.save()
+        new_product = form.save(commit=False)
+        new_product.slug = slugify(new_product.name)
+        new_product.save()
 
         return super().form_valid(form)
 
@@ -49,23 +49,46 @@ class ProductDeleteView(DeleteView):
     success_url = reverse_lazy('catalog:home')
 
 
-def activity(request, pk):
-    product_item = get_object_or_404(Product, pk=pk)
-    if product_item.is_published:
-        product_item.is_published = False
-    else:
-        product_item.is_published = True
+class ActivityView(View):
+    def get(self, request, pk):
+        product_item = get_object_or_404(Product, pk=pk)
+        if product_item.is_published:
+            product_item.is_published = False
+        else:
+            product_item.is_published = True
 
-    product_item.save()
+        product_item.save()
 
-    return redirect(reverse('catalog:home_product'))
+        return redirect(reverse('catalog:home_product'))
 
+class ContactsView(View):
+    def get(self, request):
+        return render(request, 'contacts.html')
 
-def contacts(request):
-    if request.method == 'POST':
+    def post(self, request):
         name = request.POST.get('name')
         phone = request.POST.get('phone')
         message = request.POST.get('message')
         print(f'{name} ({phone}): {message}')
 
-    return render(request, 'contacts.html')
+        return render(request, 'contacts.html')
+# def activity(request, pk):
+#     product_item = get_object_or_404(Product, pk=pk)
+#     if product_item.is_published:
+#         product_item.is_published = False
+#     else:
+#         product_item.is_published = True
+#
+#     product_item.save()
+#
+#     return redirect(reverse('catalog:home_product'))
+#
+#
+# def contacts(request):
+#     if request.method == 'POST':
+#         name = request.POST.get('name')
+#         phone = request.POST.get('phone')
+#         message = request.POST.get('message')
+#         print(f'{name} ({phone}): {message}')
+#
+#     return render(request, 'contacts.html')
