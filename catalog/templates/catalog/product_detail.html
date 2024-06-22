@@ -18,6 +18,13 @@
                     <p max_length="100">{{ object.description | slice:100 }}</p>
                     <li>Создан: {{ object.created_at }}</li>
                     <li>Обновлен: {{ object.updated_at }}</li>
+                    <li scope="row">Версия:</li>
+                    {% for version in catalog.version_set.all %}
+                    {% if version.is_active == True %}
+                        <li colspan="2">{{ version.version_number}}</li>
+                        <li class="table-success" colspan="2"> активна</li>
+                        {% endif %}
+                    {% endfor %}
                 </ul>
                 <a type="button" class="btn btn-primary" href="{% url 'catalog:home' %}">Назад</a>
             </div>

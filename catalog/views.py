@@ -23,6 +23,17 @@ class ProductDetailView(DetailView):
         self.object.save()
         return self.object
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        product = self.get_object()
+        try:
+            version = Version.objects.filter(product=product, is_active=True)
+        except Version.DoesNotExist:
+            version = None
+
+        context['version'] = version
+        return context
+
 
 class ProductCreateView(CreateView):
     model = Product
